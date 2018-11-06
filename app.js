@@ -1,14 +1,19 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var bodyParser = require('body-parser');
+var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mongoose = require('mongoose');
 var app = express();
 config = require('./DB');
+bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(cors());
 mongoose.Promise = global.Promise;
       mongoose.connect(config.DB).then(
           () => {console.log('Database is connected') },
