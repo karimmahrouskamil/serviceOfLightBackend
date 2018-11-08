@@ -2,7 +2,9 @@ var mongoose = require("mongoose");
 var MakhdouminSchema = new mongoose.Schema(
   {
     name: String,
-    address: String
+    address: String,
+    phone : String,
+    HomePhone: String
   },
   { collection: "makhdoumin" }
 );
