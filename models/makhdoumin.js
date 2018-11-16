@@ -11,10 +11,10 @@ const AddressSchema = new mongoose.Schema({
   name: 'Address'
 });
 const PhonesSchema = new mongoose.Schema({
-  MobilePhone: Number,
-  HomePhone: Number,
-  fatherPhone: Number,
-  motherPhone: Number,
+  MobilePhone: [{type: Number}],
+  HomePhone: [{type: Number}],
+  fatherPhone: [{type: Number}],
+  motherPhone: [{type: Number}],
 }, {
   _id: false,
   name: 'Mobiles'
@@ -47,7 +47,7 @@ const churchAndSpiritualInfoSchema = new mongoose.Schema({
 
 }, {
   _id: false,
-  name: 'Personal'
+  name: 'ChurchAndSpiritual'
 });
 var MakhdouminSchema = new mongoose.Schema({
   personalInfo: PersonalSchema,
