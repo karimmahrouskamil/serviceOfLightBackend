@@ -40,7 +40,7 @@ const PersonalSchema = new mongoose.Schema({
   name: 'Personal'
 });
 const churchAndSpiritualInfoSchema = new mongoose.Schema({
-  class: Number,
+  class: String,
   fatherOfConfession: String,
   servantFollowing: String,
   chomosya: String,
