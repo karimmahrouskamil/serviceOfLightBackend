@@ -58,4 +58,5 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 var Makhdoumin = require('./models/makhdoumin');
+var servants = require('./models/servants');
 module.exports = app;
