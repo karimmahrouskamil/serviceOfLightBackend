@@ -12,10 +12,10 @@ const AddressSchema = new mongoose.Schema({
 });
 const PhonesSchema = new mongoose.Schema({
   // [{type: Number}] for array
-  MobilePhone: Number,
-  HomePhone: Number,
-  fatherPhone: Number,
-  motherPhone: Number
+  MobilePhone: String,
+  HomePhone: String,
+  fatherPhone: String,
+  motherPhone: String
 }, {
   _id: false,
   name: 'Mobiles'
