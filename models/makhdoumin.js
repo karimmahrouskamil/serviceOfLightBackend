@@ -2,8 +2,8 @@ var mongoose = require("mongoose");
 const AddressSchema = new mongoose.Schema({
   buildingNumber: String,
   streetName: String,
-  floorNumber: Number,
-  flatNumber: Number,
+  floorNumber: String,
+  flatNumber: String,
   zone: String,
   remarks: String
 }, {
