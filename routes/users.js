@@ -1077,12 +1077,31 @@ router.post("/addDummy", function (req, res, next) {
     }
   ]
   async function runAsync(testowow) {
-   
 
-    await Makhdoumin.create(testowow);
+
+    await Makhdoumin.create(testowow, function (err, post) {
+      if (err) return next(err);
+
+ console.log(post);
+ 
+    });
   }
   AllMakhdouminData.forEach(function (eachMakhdoum) {
 
+    function returnDateOfBirth(eachMakhdoumBirthDate) {
+      if (eachMakhdoumBirthDate === "null" || eachMakhdoumBirthDate === null || eachMakhdoumBirthDate == null) {
+        eachMakhdoumBirthDate = new Date()
+        return eachMakhdoumBirthDate
+      } else {
+        eachMakhdoumBirthDate.toString()
+        eachMakhdoumBirthDate = new Date(eachMakhdoumBirthDate)
+        if ((eachMakhdoumBirthDate instanceof Date && !isNaN(eachMakhdoumBirthDate.valueOf())) == false) {
+          eachMakhdoumBirthDate = new Date()
+        }
+
+      }
+      return eachMakhdoumBirthDate
+    }
     let makhdouminWillBeReshaped = {
       "personalInfo": {
         "name": eachMakhdoum.name,
@@ -1101,7 +1120,7 @@ router.post("/addDummy", function (req, res, next) {
           "motherPhone": eachMakhdoum.motherPhone
         },
         "school": eachMakhdoum.school,
-        "birthDate": "2000-08-24T00:00:00.000Z",
+        "birthDate": returnDateOfBirth(eachMakhdoum.birthDate),
         "onlineInfo": {
           "facebook": eachMakhdoum.facebook,
           "email": eachMakhdoum.email
@@ -1116,6 +1135,7 @@ router.post("/addDummy", function (req, res, next) {
       }
 
     }
+
     runAsync(makhdouminWillBeReshaped)
 
 
