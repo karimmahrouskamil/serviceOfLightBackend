@@ -2,11 +2,24 @@ var express = require("express");
 var router = express.Router();
 var Makhdoumin = require("./../schema/makhdoumin");
 var servants = require("./../schema/servants");
+var Promise = require('promise');
+ var makhdouminService = require('../services/makhdoumin');
+// var promise = new Promise(function (resolve, reject) {
+//   get('http://www.google.com', function (err, res) {
+//     if (err) reject(err);
+//     else resolve(res);
+//   });
+// });
+
 /* GET users listing. */
 router.get("/makhdoumin", function (req, res, next) {
   res.json({
     "hola": "respond with a resource"
   });
+  makhdouminService.getMakhdouminData().then(function (data) {
+    console.log(data+ "is hereeeee");
+    
+  })
 });
 router.post("/addMakhdoum", function (req, res, next) {
   Makhdoumin.create(req.body, function (err, post) {
